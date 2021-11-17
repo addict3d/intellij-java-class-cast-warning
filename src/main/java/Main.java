@@ -3,6 +3,23 @@ import tmp.GoodI;
 import tmp.II;
 
 public class Main {
+    public interface ExceptionInterface {
+        String getFooFromInterface();
+
+        static void handleException(ExceptionInterface e) {
+            System.out.println("Handling " + e.getFooFromInterface());
+        }
+    }
+
+    public static class MyInterfaceException extends Exception implements ExceptionInterface {
+        @Override
+        public String getFooFromInterface() {
+            return "foo";
+        }
+    }
+
+    public static class NonInterfaceException extends Exception {
+    }
 
     MyInterfaceException myInterfaceException = new MyInterfaceException();
     NonInterfaceException nonInterfaceException = new NonInterfaceException();
